@@ -1,51 +1,56 @@
 ServerEvents.recipes(event => {
-
-    
     event.remove({ output: 'exdeorum:string_mesh' }) 
     event.remove({ output: 'exdeorum:flint_mesh' }) 
     event.remove({ output: 'exdeorum:iron_mesh' }) 
     event.remove({ output: 'exdeorum:golden_mesh' }) 
     event.remove({ output: 'exdeorum:diamond_mesh' }) 
 
-    const A = 'minecraft:string'
-    const B = 'minecraft:honeycomb'
-    const C = 'exdeorum:string_mesh'
-    const D = 'cyclic:flint_block'
-    const E = 'productivebees:wax'
-    const F = 'exdeorum:flint_mesh'
-    const G = 'minecraft:iron_block'
-    const H = 'minecraft:gold_block'
-    const I = Item.of('productivebees:configurable_honeycomb', 1, {type:"productivebees:gold"})
-    const J = 'exdeorum:iron_mesh'
-    const K = 'exdeorum:golden_mesh'
-    const L = 'minecraft:diamond_block'
-    const M = Item.of('productivebees:configurable_honeycomb', 1, {type:"productivebees:diamond"})
-
     event.shaped(Item.of('exdeorum:string_mesh', 1), [
         'AAA',
         'ABA',
         'AAA'
-    ], { A, B })
+    ], { 
+        A : 'minecraft:string', 
+        B : 'minecraft:honeycomb'
+    })
+
     event.shaped(Item.of('exdeorum:flint_mesh', 1), [
         'DED',
         'ECE',
         'DED'
-    ], { C, D, E})
+    ], { 
+        C : 'exdeorum:string_mesh', 
+        D : 'cyclic:flint_block', 
+        E : 'productivebees:wax'
+    })
+
     event.shaped(Item.of('exdeorum:iron_mesh', 1), [
         'GGG',
         'GFG',
         'GGG'
-    ], { F, G })
+    ], { 
+        F : 'exdeorum:flint_mesh', 
+        G : 'minecraft:iron_block'
+    })
+
     event.shaped(Item.of('exdeorum:golden_mesh', 1), [
         'HIH',
         'IJI',
         'HIH'
-    ], { H, I, J })
+    ], 
+    {   H : 'minecraft:gold_block', 
+        J : 'exdeorum:iron_mesh',
+        I : Item.of('productivebees:configurable_honeycomb', '{EntityTag:{type:"productivebees:gold"}}').strongNBT() })
+
     event.shaped(Item.of('exdeorum:diamond_mesh', 1), [
         'LML',
         'MKM',
         'LML'
-    ], { K, L, M })
+    ], { 
+        K : 'exdeorum:golden_mesh', 
+        L : 'minecraft:diamond_block', 
+        M : Item.of('productivebees:configurable_honeycomb', '{EntityTag:{type:"productivebees:diamond"}}').strongNBT() 
+    })
 })
 
 
